@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ファイル共有ダッシュボード</title>
+    <!-- 外部CSSファイルを読み込み -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>📁 ファイル共有一覧</h1>
+            <button class="btn-add" id="openModalBtn">＋ 追加</button>
+        </header>
+
+        <!-- ファイル一覧を表示するエリア -->
+        <main class="file-grid" id="fileGrid">
+            <!-- サンプルデータ -->
+            <div class="file-card">
+                <div>
+                    <h3>プロジェクト関連資料一式</h3>
+                    <span class="count-badge">ファイル数: 3個</span>
+                    <div class="meta">投稿者: たなか | パスワードあり</div>
+                    <div class="desc">デザインカンプ、要件定義書、スケジュール表の3点です。</div>
+                </div>
+                <button class="btn-download" onclick="downloadFiles('プロジェクト関連資料一式', '1234')">一括ダウンロード</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- 入力ページ（モーダルダイアログ） -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModalBtn">&times;</span>
+            <h2>ファイルの追加</h2>
+            <form id="uploadForm">
+                
+                <!-- ニックネーム入力 -->
+                <div class="form-group">
+                    <label for="nickname">ニックネーム</label>
+                    <input type="text" id="nickname" class="form-control" placeholder="例：ユーザーA" required>
+                </div>
+
+                <!-- パスワード設定 -->
+                <div class="form-group">
+                    <label for="password">ダウンロード用パスワード（任意）</label>
+                    <input type="password" id="password" class="form-control" placeholder="設定しない場合は空欄">
+                </div>
+
+                <!-- ファイルのドロップorファイル選択 -->
+                <div class="form-group">
+                    <label>アップロードファイル（複数選択可）</label>
+                    <div class="drop-zone" id="dropZone">
+                        <p>ファイルをここにドロップするか、クリックして選択</p>
+                        <ul class="file-list-preview" id="fileListPreview"></ul>
+                        <input type="file" id="fileInput" class="file-input" multiple required>
+                    </div>
+                </div>
+
+                <!-- 簡単な内容説明 -->
+                <div class="form-group">
+                    <label for="description">簡単な内容説明</label>
+                    <textarea id="description" class="form-control" rows="3" placeholder="ファイルに関する説明文を入力してください" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">登録する</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 外部JavaScriptファイルを読み込み -->
+    <script src="script.js"></script>
+</body>
+</html>
